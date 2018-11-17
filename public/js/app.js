@@ -1,7 +1,9 @@
+
 class Developers extends React.Component{
   constructor (props){
     super(props)
     this.getDevelopers = this.getDevelopers.bind(this)
+    this.deleteDeveloper = this.deleteDeveloper.bind(this)
     this.state = {developers: []}
   }
   getDevelopers()
@@ -18,6 +20,20 @@ class Developers extends React.Component{
   componentDidMount () {
     this.getDevelopers()
   }
+  deleteDeveloper(developer,index) {
+    fetch('developers/' + developer.id,
+      {
+        method: 'DELETE'
+      })
+      .then(data => {
+        this.setState({
+          developers: [
+            ...this.state.developers.slice(0, index),
+            ...this.state.developers.slice(index + 1)
+          ]
+        })
+      })
+  }
   render(){
     return(
       <div>
@@ -33,6 +49,8 @@ class Developers extends React.Component{
               <p> GA Site: {developer.ga_site}</p>
               <p> Company: {developer.company}</p>
               <p> Technology: {developer.technology}</p>
+              <button onClick={()=> this.deleteDeveloper(developer, index)}>Delete</button>
+              <button>Edit</button>
             </li>
           )
         })}
