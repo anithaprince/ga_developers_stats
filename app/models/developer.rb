@@ -1,6 +1,7 @@
 class Developer
 
   attr_reader :id, :name, :age, :state, :ga_site, :company, :technology
+
   # connect to postgres
 if (ENV['DATABASE_URL'])
    uri = URI.parse(ENV['DATABASE_URL'])
