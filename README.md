@@ -22,3 +22,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+https://stackoverflow.com/questions/23233414/how-to-push-seeds-rb-to-existing-rails-app-on-heroku/23233638 
