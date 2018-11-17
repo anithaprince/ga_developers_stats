@@ -16,7 +16,7 @@ sites = ["Atlanta","Austin", "Boston","Chicago", "Dallas",
 
 technologies = ["MEAN Stack", "MERN Stack", "NERDS Stack", "LAMP Stack", "Ruby on Rails", "PHP"]
 # do
-#   CREATE TABLE developer (id SERIAL, name VARCHAR(255), age INT, state VARCHAR(50), ga_site VARCHAR(50), company VARCHAR(255), technology VARCHAR(255));
+#   CREATE TABLE developers (id SERIAL, name VARCHAR(255), age INT, state VARCHAR(50), ga_site VARCHAR(50), company VARCHAR(255), technology VARCHAR(255));
 # end
 
 50.times do
