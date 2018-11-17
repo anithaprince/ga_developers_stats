@@ -1,12 +1,15 @@
 class Developer
 
   attr_reader :id, :name, :age, :state, :ga_site, :company, :technology
+
   # connect to postgres
-  DB = PG.connect({
-  :host => "localhost",
-  :port => 5432,
-  :dbname => "ga_developers_stats_development"
-  })
+  if(ENV['DATABASE_URL'])
+    uri = URI.parse(ENV['DATABASE_URL'])
+    DB = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
+  else
+    DB = PG.connect(host: "localhost", port: 5432, dbname: 'ga_developers_stats_development')
+  end
+
 
   DB.prepare("create_developers",
     <<-SQL
