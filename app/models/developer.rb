@@ -3,30 +3,26 @@ class Developer
   attr_reader :id, :name, :age, :state, :ga_site, :company, :technology
 
   # connect to postgres
-  if(ENV['DATABASE_URL'])
-    uri = URI.parse(ENV['DATABASE_URL'])
-    DB = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
-  else
-    DB = PG.connect(host: "localhost", port: 5432, dbname: 'ga_developers_stats_development')
-  end
+if (ENV['DATABASE_URL'])
+   uri = URI.parse(ENV['DATABASE_URL'])
+   DB = PG.connect(uri.hostname, uri.port, nil, nil, uri.path[1..-1], uri.user, uri.password)
+ else
+   DB = PG.connect(host:"localhost", port: 5432, dbname: 'ga_developers_stats_development')
+ end
 
+ def initialize(opts = {}, id = nil)
+   @id = id.to_i
+   @name = opts["name"]
+   @age = opts["age"].to_i
+   @state = opts["state"]
+   @ga_site = opts["ga_site"]
+   @company = opts["company"]
+   @technology = opts["technology"]
+ end
 
-  # initialize options hash
-    def initialize(opts = {}, id = nil)
-        @id = id.to_i
-        @name = opts["name"]
-        @age = opts["age"].to_i
-        @state = opts["state"]
-        @ga_site = opts["ga_site"]
-        @company = opts["company"]
-        @technology = opts["technology"]
-    end
-
-
-  # ==================================================
-  #                  PREPARED STATEMENTS
-  # ==================================================
-
+# ==================================================
+#                  PREPARED STATEMENTS
+# ==================================================
   DB.prepare("create_developer",
     <<-SQL
         INSERT INTO developers (name, age, state, ga_site, company, technology)
@@ -34,38 +30,37 @@ class Developer
         RETURNING id, name, age, state, ga_site, company, technology;
     SQL
   )
-
   DB.prepare("delete_developer",
     "DELETE FROM developers WHERE id=$1 RETURNING id;"
   )
 
   DB.prepare("find_developer",
     <<-SQL
-        SELECT *
-        FROM developers
-        WHERE developers.id=$1;
+     SELECT *
+      FROM developers
+      WHERE developers.id=$1;
     SQL
-  )
+)
 
   DB.prepare("update_developer",
   <<-SQL
-      UPDATE developers
-      SET name=$2, age=$3, state=$4, ga_site=$5, company=$6, technology=$7
-      WHERE id=$1
-      RETURNING id, name, age, state, ga_site, company, technology;
-  SQL
+        UPDATE developers
+        SET name=$2, age=$3, state=$4, ga_site=$5, company=$6, technology=$7
+        WHERE id=$1
+        RETURNING id, name, age, state, ga_site, company, technology
+        SQL
 )
 
-# ==================================================
-#                      ROUTES
-# ==================================================
-  # get all
-  def self.all
+# =======================================
+#                    Routes
+# =======================================
+
+# get all
+def self.all
     results = DB.exec(
       <<-SQL
-          SELECT *
-          FROM developers
-          ORDER BY developers.ga_site ASC;
+        SELECT * FROM developers
+        ORDER BY developers.ga_site ASC;
       SQL
     )
     return results.map do |result|
@@ -80,7 +75,7 @@ class Developer
     if result
       return developer = Developer.new(result, result["id"])
     else
-      return {message: "sorry no developer found at this id: #{id}", status: 400}
+      return { mesage: "sorry no developer found at this id: #{id}", status: 400 }
     end
   end
 
@@ -96,9 +91,9 @@ class Developer
     p 'this is the result'
     p results
     if results.first
-      return { deleted: true }
+      return{ deleted: true }
     else
-      return { message: "sorry cannot find developer at id: #{id}", status: 400}
+      return { message: "sorry cannot find developer at id: #{id}", status: 400 }
     end
   end
 
@@ -106,15 +101,12 @@ class Developer
   def self.update(id, opts={})
     results = DB.exec_prepared("update_developer",
       [
-        id, opts["name"],opts["age"],opts["state"],opts["ga_site"],opts["company"],opts["technology"]
-      ]
-    )
-    if results.first
-      return Developer.new(results.first, results.first["id"])
-    else
-      return { message: "sorry cannot find developer at id: #{id}", status: 400}
+        id, opts["name"], opts["age"], opts["state"], opts["ga_site"], opts["company"], opts["technology"]
+      ])
+      if results.first
+        return Developer.new(results.first, results.first["id"])
+      else
+        return{ message: "sorry cannot find developer at id: #{id}", status: 400 }
     end
   end
-
-
 end
