@@ -54,7 +54,6 @@ class Developers extends React.Component{
           )
         })}
       </ul>
-
     </div>
     )
   }
