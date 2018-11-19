@@ -1,9 +1,12 @@
 class Developers extends React.Component{
   constructor (props){
     super(props)
+    this.state = {
+      developers: []
+    }
     this.getDevelopers = this.getDevelopers.bind(this)
     this.deleteDeveloper = this.deleteDeveloper.bind(this)
-    this.state = {developers: []}
+
   }
   componentDidMount () {
     this.getDevelopers();
@@ -16,7 +19,7 @@ class Developers extends React.Component{
           developers: data
         })
         //console.log(this.state.developer);
-    })
+    }).catch(error => console.log(error))
   }
   deleteDeveloper(developer,index) {
     fetch('developers/' + developer.id,
@@ -32,9 +35,11 @@ class Developers extends React.Component{
         })
       })
   }
+
   render(){
     return(
       <div>
+      <CreateDeveloperForm  developers={this.state.developers} getDevelopers={this.getDevelopers}/>
       <h2> Developers List </h2>
         <table className="fixedHeader">
           <thead>
@@ -77,7 +82,6 @@ class App extends React.Component {
     return (
       <div>
         <h1 className='title'> General Assembly Student Stats App </h1>
-        
         <Developers />
       </div>
     )

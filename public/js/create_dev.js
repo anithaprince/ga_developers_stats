@@ -37,12 +37,15 @@ class CreateDeveloperForm extends React.Component {
       }
     })
       .then(createdDeveloper => {
-        console.log(createdDeveloper);
+      //  console.log(createdDeveloper);
         return createdDeveloper.json()
       })
       .then(jsonedDeveloper => {
         console.log(jsonedDeveloper);
-        this.setState({developers: [jsonedDeveloper, ...this.state.developers]})
+        // const updatedDevelopers = this.props.developers
+        // updatedDevelopers.push(jsonedDeveloper)
+        // this.setState({developers: updatedDevelopers})
+        this.props.getDevelopers()
       })
       .catch(error => console.log(error))
   }
