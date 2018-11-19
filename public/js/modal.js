@@ -84,7 +84,7 @@ class App extends React.Component {
 
     return (
       <ButtonToolbar>
-    
+
         <Button
           bsStyle="primary"
           onClick={() => this.setState({ lgShow: true })}

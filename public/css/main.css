@@ -1,17 +1,29 @@
-.Modal {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  right: 40px;
-  bottom: 40px;
-  background-color: papayawhip;
+
+.fixedHeader {
+  border: 3px solid black;
+  width: 700px;
+  table-layout: fixed;
+  border-collapse: collapse;
+  height: auto;
+  align-items: center;
 }
 
-.Overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rebeccapurple;
+.fixedHeader tbody {
+  overflow: auto;
+  height: 100px;
+}
+
+.fixedHeader thead {
+  background: #20517e;
+  color: white;
+}
+
+.fixedHeader th, .fixedHeader td {
+  padding: 10px;
+  text-align: left;
+  width: 150px;
+}
+
+thead > tr, body{
+  width: 100%;
 }
