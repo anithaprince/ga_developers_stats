@@ -46,6 +46,7 @@ class CreateDeveloperForm extends React.Component {
         // updatedDevelopers.push(jsonedDeveloper)
         // this.setState({developers: updatedDevelopers})
         this.props.getDevelopers()
+        this.props.onHide()
       })
       .catch(error => console.log(error))
   }

@@ -1,7 +1,8 @@
 
 .fixedHeader {
   border: 3px solid black;
-  width: 700px;
+  width: 1200px;
+  margin: 0 auto;
   table-layout: fixed;
   border-collapse: collapse;
   height: auto;

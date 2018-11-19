@@ -14,7 +14,7 @@ class MyLargeModal extends React.Component {
           <Modal.Title id="contained-modal-title-lg">Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <CreateDeveloperForm getDevelopers={this.props.getDevelopers}/>
+          <CreateDeveloperForm getDevelopers={this.props.getDevelopers} onHide={this.props.onHide}/>
         </Modal.Body>
 
         <Modal.Footer>
