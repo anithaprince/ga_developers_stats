@@ -60,7 +60,7 @@ def self.all
     results = DB.exec(
       <<-SQL
         SELECT * FROM developers
-        ORDER BY developers.id ASC;
+        ORDER BY developers.id DESC;
       SQL
     )
     return results.map do |result|

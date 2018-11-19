@@ -39,7 +39,7 @@ class Developers extends React.Component{
   render(){
     return(
       <div>
-      <CreateDeveloperForm  developers={this.state.developers} getDevelopers={this.getDevelopers}/>
+      <App2 getDevelopers={this.getDevelopers}/>
       <h2> Developers List </h2>
         <table className="fixedHeader">
           <thead>
