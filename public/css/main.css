@@ -10,7 +10,6 @@
 }
 
 .fixedHeader tbody {
-  overflow: auto;
   height: 100px;
 }
 
@@ -27,4 +26,11 @@
 
 thead > tr, body{
   width: 100%;
+}
+
+.editInput {
+  background: purple;
+  width: 80em;
+  margin: 30px;
+  padding: 10px;
 }
