@@ -13,37 +13,18 @@ class Developers extends React.Component{
   componentDidMount () {
     this.getDevelopers()
   }
-  getDevelopers()
-  {
+  componentDidMount () {
+    this.getDevelopers();
+  }
+  getDevelopers(){
     fetch('/developers')
       .then(response => response.json())
       .then(data => {
         this.setState({
           developers: data
         })
-        console.log(this.state.developer);
-    }).catch(error => console.log(error))
-  }
-  handleCreate (developer) {
-    console.log([developer, ...this.state.developers])
-    this.setState({developers: [developer, ...this.state.developers]})
-  }
-  handleCreateSubmit (developer) {
-    fetch('/developers', {
-      body: JSON.stringify(developer),
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json, text/plain, */*',
-        'Content-Type': 'application/json'
-      }
+        //console.log(this.state.developer);
     })
-      .then(createdDeveloper => {
-        return createdDeveloper.json()
-      })
-      .then(jsonedDeveloper => {
-        this.handleCreate(jsonedDeveloper)
-      })
-      .catch(error => console.log(error))
   }
   deleteDeveloper(developer,index) {
     fetch('developers/' + developer.id,
@@ -59,7 +40,6 @@ class Developers extends React.Component{
         })
       })
   }
-
   render(){
     return(
       <div>
@@ -106,7 +86,7 @@ class App extends React.Component {
       <div>
         <CreateDeveloperForm handleCreate={this.handleCreate} handleSubmit={this.handleCreateSubmit} />
         <h1 className='title'> General Assembly Student Stats App </h1>
-        <DeveloperForm />
+
         <Developers />
       </div>
     )

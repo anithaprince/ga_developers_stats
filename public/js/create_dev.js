@@ -10,27 +10,15 @@ class CreateDeveloperForm extends React.Component {
       company: '',
       technology:'',
       developers : [],
-
     }
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleCreate = this.handleCreate.bind(this)
     this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
   }
   handleChange(event) {
    this.setState({[event.target.id]: event.target.value})
   }
-  handleSubmit(event) {
-    console.log(this.state);
+  handleCreateSubmit (event) {
     event.preventDefault()
-    this.handleCreateSubmit()
-  }
-  handleCreate (developer) {
-    console.log([developer, ...this.state.developers])
-    this.setState({developers: [developer, ...this.state.developers]})
-  }
-
-  handleCreateSubmit () {
     let developer={
       name: this.refs.name.value,
       age: this.refs.age.value,
@@ -54,14 +42,14 @@ class CreateDeveloperForm extends React.Component {
       })
       .then(jsonedDeveloper => {
         console.log(jsonedDeveloper);
-        this.handleCreate(jsonedDeveloper)
+        this.setState({developers: [jsonedDeveloper, ...this.state.developers]})
       })
       .catch(error => console.log(error))
-}
+  }
   render() {
     return(
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleCreateSubmit}>
           <label for='name'>Name</label>
           <div>
             <input type='text' id='name' ref='name'  onChange={this.handleChange} value={this.state.name}/>

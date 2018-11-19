@@ -61,6 +61,7 @@ class MyLargeModal extends React.Component {
             dui. Donec ullamcorper nulla non metus auctor fringilla.
           </p>
         </Modal.Body>
+        <CreateDeveloperForm  />
         <Modal.Footer>
           <Button onClick={this.props.onHide}>Close</Button>
         </Modal.Footer>

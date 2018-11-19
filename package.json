@@ -1,5 +1,14 @@
 {
   "name": "ga_developers_stats",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.6.3",
+    "react-modal": "^3.6.1",
+    "uniq": "^1.0.1"
+  },
+  "devDependencies": {
+    "babel-loader": "^8.0.4"
+  }
 }
