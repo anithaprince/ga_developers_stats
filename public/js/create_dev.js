@@ -8,10 +8,14 @@ class CreateDeveloperForm extends React.Component {
       state: '',
       ga_site: '',
       company: '',
-      technology:''
+      technology:'',
+      developers : [],
+
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleCreate = this.handleCreate.bind(this)
+    this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
   }
   handleChange(event) {
    this.setState({[event.target.id]: event.target.value})
@@ -19,9 +23,41 @@ class CreateDeveloperForm extends React.Component {
   handleSubmit(event) {
     console.log(this.state);
     event.preventDefault()
-    this.props.handleSubmit(this.state)
+    this.handleCreateSubmit()
+  }
+  handleCreate (developer) {
+    console.log([developer, ...this.state.developers])
+    this.setState({developers: [developer, ...this.state.developers]})
   }
 
+  handleCreateSubmit () {
+    let developer={
+      name: this.refs.name.value,
+      age: this.refs.age.value,
+      state: this.refs.state.value,
+      ga_site: this.refs.ga_site.value,
+      company: this.refs.company.value,
+      technology: this.refs.technology.value,
+    }
+    console.log(developer);
+    fetch('/developers', {
+      body: JSON.stringify(developer),
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(createdDeveloper => {
+        console.log(createdDeveloper);
+        return createdDeveloper.json()
+      })
+      .then(jsonedDeveloper => {
+        console.log(jsonedDeveloper);
+        this.handleCreate(jsonedDeveloper)
+      })
+      .catch(error => console.log(error))
+}
   render() {
     return(
       <div>
