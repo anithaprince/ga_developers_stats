@@ -2,13 +2,14 @@ class Developers extends React.Component{
   constructor (props){
     super(props)
     this.state = {
+      showEditForm: false,
       developers: [],
       developer: {}
     }
     this.getDevelopers = this.getDevelopers.bind(this)
     this.deleteDeveloper = this.deleteDeveloper.bind(this)
-    this.handleCreate = this.handleCreate.bind(this)
-    this.handleCreateSubmit = this.handleCreateSubmit.bind(this)
+    this.editDeveloper = this.editDeveloper.bind(this)
+    this.toggleEditForm = this.toggleEditForm.bind(this)
   }
   componentDidMount () {
     this.getDevelopers()
@@ -40,6 +41,28 @@ class Developers extends React.Component{
         })
       })
   }
+  editDeveloper(developer, index){
+    fetch('developers/' + developer.id,
+    {
+      body: JSON.stringify(developer),
+      method: 'PUT',
+      headers: {
+        'Accept': 'application/json, text/plain, */*',
+        'Concept-Type':'application/json'
+      }
+    })
+    .then(updatedDeveloper => {
+      return updatedDeveloper.json()
+    })
+    .then(jsonedDeveloper => {
+      this.getDeveloper()
+    })
+    .catch(error => console.log(error))
+  }
+  toggleEditForm(developer, index){
+    console.log("anuythgkja")
+    this.setState({showEditForm: !this.state.showEditForm})
+  }
   render(){
     return(
       <div>
@@ -69,8 +92,9 @@ class Developers extends React.Component{
               <td>{developer.ga_site}</td>
               <td>{developer.company}</td>
               <td>{developer.technology}</td>
+              {this.state.showEditForm ? <EditForm /> : null}
               <td><button onClick={()=> this.deleteDeveloper(developer, index)}>Delete</button></td>
-              <td><button>Edit</button></td>
+              <td><button onClick={this.toggleEditForm}>Edit</button></td>
             </tr>
             )
           })}
