@@ -1,32 +1,62 @@
 
 class CreateDeveloperForm extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      name: '',
+      age: 0,
+      state: '',
+      ga_site: '',
+      company: '',
+      technology:''
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  handleChange(event) {
+   this.setState({[event.target.id]: event.target.value})
+  }
+  handleSubmit(event) {
+    console.log(this.state);
+    event.preventDefault()
+    this.props.handleSubmit(this.state)
+  }
+
   render() {
     return(
-      <div className='field'>
-        <form>
-          <label className='label' for='name'>Name</label>
-          <div className='control'>
-            <input className='input' type='text' id='name' ref='name'/>
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <label for='name'>Name</label>
+          <div>
+            <input type='text' id='name' ref='name'  onChange={this.handleChange} value={this.state.name}/>
           </div>
-          <label className='label' for='age'>Age</label>
-          <div className='control'>
-            <input className='input' type='number' id='age' ref='age'/>
+
+          <label for='age'>Age</label>
+          <div>
+            <input type='number' id='age' ref='age' onChange={this.handleChange} value={this.state.age}/>
           </div>
-          <label className='label' for='key_skill'>Key Skill</label>
-          <div className='control'>
-            <input className='input' type='text' id='key_skill'ref='key_skill' />
+
+          <label for='state'>State</label>
+          <div>
+            <input type='text' id='state' ref='state' onChange={this.handleChange} value={this.state.state} />
           </div>
-          <label className='label' for='phone' >Phone</label>
-          <div className='control'>
-            <input className='input' type='tel' id='phone' ref='phone' />
+
+          <label for='ga_site'>GA Site</label>
+          <div>
+            <input type='text' id='ga_site' ref='ga_site' onChange={this.handleChange} value={this.state.ga_site}/>
           </div>
-          <label className='label 'for='avatar' >Avatar</label>
-          <div className='control'>
-            <input className='input' type='text' id='avatar' ref='avatar'/>
+
+          <label for='company'>Company</label>
+          <div>
+            <input type='text' id='company' ref='company' onChange={this.handleChange} value={this.state.company}/>
           </div>
-          <div className='control'>
-            <input className='button is-primary' type='submit' /> &nbsp;
-            <button className="button is-link">Cancel</button>
+
+          <label for='technology'>Technology</label>
+          <div>
+            <input type='text' id='technology' ref='technology' onChange={this.handleChange} value={this.state.technology}/>
+          </div>
+          <div>
+            <input type='submit' />
           </div>
         </form>
       </div>
