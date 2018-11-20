@@ -15,7 +15,111 @@ application up and running.
 
   Our heroku was giving an error for EditForm not found while localhost is running fine. We did not get to have a fixed table header and graph is not done, so we didn't get to do what we had expected.
 
-Things you may want to cover:
+We would have like to populate dynamic charts by integrating psql and react. But due to lack of time we populated charts for the 200 seed records by running following commands in bash:
+
+
+select count (*) from developers;
+ count 
+-------
+   200
+(1 row)
+
+
+select technology, count(technology) from developers group by technology;
+  technology   | count 
+---------------+-------
+ PHP           |    41
+ NERDS Stack   |    35
+ Ruby on Rails |    29
+ LAMP Stack    |    25
+ MEAN Stack    |    45
+ MERN Stack    |    24
+ MEAN          |     1
+(7 rows)
+
+SELECT
+ ga_site, 
+ count(ga_site)
+FROM
+ developers
+GROUP BY
+ ga_site;
+
+     ga_site     | count 
+-----------------+-------
+ New York City   |    14
+ Remote          |     1
+ Phoenix         |    15
+ San Francisco   |    12
+ Washington D.C. |     8
+ Dallas          |    13
+ Austin          |     9
+ Chicago         |    13
+ Denver          |    15
+ San Diego       |    10
+ Detroit         |    17
+ Los Angeles     |    16
+ Seattle         |    14
+ Atlanta         |    13
+ Boston          |    15
+ Miami           |    15
+(16 rows)
+ 
+ 
+ DATABASE=> select state, count(state) from developers group by state;
+     state      | count 
+----------------+-------
+ Vermont        |     2
+ Nevada         |     5
+ New York       |     3
+ West Virginia  |     2
+ South Carolina |     5
+ Hawaii         |     2
+ New Mexico     |     4
+ Arkansas       |     6
+ Missouri       |     4
+ South Dakota   |     3
+ Ohio           |     4
+ Minnesota      |     6
+ Washington     |     5
+ Kentucky       |     6
+ Arizona        |     3
+ Maryland       |     4
+ Wyoming        |     3
+ New Hampshire  |     3
+ North Dakota   |     5
+ Nebraska       |     2
+ Tennessee      |     3
+ Oregon         |     1
+ Idaho          |     5
+ Alabama        |     5
+ North Carolina |     2
+ Colorado       |     4
+ Mississippi    |     4
+ Florida        |     4
+ Delaware       |     3
+ Louisiana      |     8
+ New Jersey     |     3
+ Connecticut    |     3
+ Indiana        |     7
+ Iowa           |     2
+ Massachusetts  |     7
+ Rhode Island   |     3
+ Michigan       |     1
+ Pennsylvania   |     6
+ Montana        |     6
+ Wisconsin      |     5
+ Illinois       |     4
+ Georgia        |     2
+ Utah           |     2
+ California     |     8
+ Maine          |     6
+ Kansas         |     4
+ Texas          |     6
+ Alaska         |     5
+ Oklahoma       |     4
+(49 rows)
+
 
 * Ruby version
   Struggling through ruby versions from Sumit's computer to Anitha's computer and to Herkoku's version.
