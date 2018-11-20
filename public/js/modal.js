@@ -11,7 +11,7 @@ class MyLargeModal extends React.Component {
         aria-labelledby="contained-modal-title-lg"
       >
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg">Create New Developer </Modal.Title>
+          <Modal.Title id="contained-modal-title-lg">Developer Trend Study </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <CreateDeveloperForm getDevelopers={this.props.getDevelopers} onHide={this.props.onHide}/>
@@ -67,9 +67,9 @@ class App2 extends React.Component {
           bsStyle="primary"
           onClick={() => this.setState({ lgShow: true })}
         >
-          Add Developer
+          Add You Developer Data - Start Survey
         </Button>
-        <MyLargeModal show={this.state.lgShow} onHide={lgClose}/>
+        <MyLargeModal show={this.state.lgShow} onHide={lgClose} getDevelopers={this.props.getDevelopers}/>
       </ButtonToolbar>
     );
   }

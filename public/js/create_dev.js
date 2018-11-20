@@ -1,4 +1,4 @@
-
+var ControlLabel = ReactBootstrap.ControlLabel;
 class CreateDeveloperForm extends React.Component {
   constructor (props) {
     super(props)
@@ -54,7 +54,7 @@ class CreateDeveloperForm extends React.Component {
     return(
       <div>
         <form onSubmit={this.handleCreateSubmit}>
-          <label for='name'>Name</label>
+          <ControlLabel for='name'>Name</ControlLabel>
           <div>
             <input type='text' id='name' ref='name'  onChange={this.handleChange} value={this.state.name}/>
           </div>
