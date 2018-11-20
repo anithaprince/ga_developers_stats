@@ -3,15 +3,17 @@ var Modal = ReactBootstrap.Modal;
 var ButtonToolbar = ReactBootstrap.ButtonToolbar;
 
 class Developers extends React.Component{
-  constructor (props,context){
-    super(props, context)
+  constructor (props){
+    super(props)
     this.state = {
       developers: [],
       smShow: false,
       lgShow: false
+
     }
     this.getDevelopers = this.getDevelopers.bind(this)
     this.deleteDeveloper = this.deleteDeveloper.bind(this)
+
   }
   componentDidMount () {
     this.getDevelopers();
@@ -40,6 +42,7 @@ class Developers extends React.Component{
         })
       })
   }
+
   render(){
     let smClose = () => this.setState({ smShow: false });
     let lgClose = () => this.setState({ lgShow: false });
@@ -77,13 +80,19 @@ class Developers extends React.Component{
               <td>{developer.ga_site}</td>
               <td>{developer.company}</td>
               <td>{developer.technology}</td>
+              <td>
+                <ButtonToolbar>
+                  <Button
+                     
+                     onClick={() => this.setState({ lgShow: true })}
+                   >
+                   <img className="edit" src="/css/images/edit.png" />
+                  </Button>
+                  <MyLargeModal1 show={this.state.lgShow} onHide={lgClose}/>
+                </ButtonToolbar>
+              </td>
 
-              <td><button onClick={()=> this.deleteDeveloper(developer, index)}>Delete</button></td>
-
-              <td><img className="edit" src="/css/images/edit.png" /></td>
               <td onClick={()=> this.deleteDeveloper(developer, index)}><img className="delete" src="/css/images/deletebutton.jpg" /></td>
-
-    
             </tr>
             )
           })}
