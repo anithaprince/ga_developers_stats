@@ -6,7 +6,12 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+  Struggling through ruby versions from Sumit's computer to Anitha's computer and to Herkoku's version.
 
+  In order to solve it we had to manually change the versions through the gemfile and .ruby-version
+
+
+  
 * System dependencies
 
 * Configuration
@@ -22,4 +27,4 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-https://stackoverflow.com/questions/23233414/how-to-push-seeds-rb-to-existing-rails-app-on-heroku/23233638 
+https://stackoverflow.com/questions/23233414/how-to-push-seeds-rb-to-existing-rails-app-on-heroku/23233638
