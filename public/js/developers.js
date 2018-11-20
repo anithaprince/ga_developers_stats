@@ -3,7 +3,7 @@ var Modal = ReactBootstrap.Modal;
 var ButtonToolbar = ReactBootstrap.ButtonToolbar;
 
 class Developers extends React.Component{
-  constructor (props){
+  constructor (props,context){
     super(props)
     this.state = {
       developers: [],
@@ -83,7 +83,7 @@ class Developers extends React.Component{
               <td>
                 <ButtonToolbar>
                   <Button
-                     
+
                      onClick={() => this.setState({ lgShow: true })}
                    >
                    <img className="edit" src="/css/images/edit.png" />
