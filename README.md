@@ -19,14 +19,14 @@ We would have like to populate dynamic charts by integrating psql and react. But
 
 
 select count (*) from developers;
- count 
+ count
 -------
    200
 (1 row)
 
 
 select technology, count(technology) from developers group by technology;
-  technology   | count 
+  technology   | count
 ---------------+-------
  PHP           |    41
  NERDS Stack   |    35
@@ -38,14 +38,14 @@ select technology, count(technology) from developers group by technology;
 (7 rows)
 
 SELECT
- ga_site, 
+ ga_site,
  count(ga_site)
 FROM
  developers
 GROUP BY
  ga_site;
 
-     ga_site     | count 
+     ga_site     | count
 -----------------+-------
  New York City   |    14
  Remote          |     1
@@ -64,10 +64,10 @@ GROUP BY
  Boston          |    15
  Miami           |    15
 (16 rows)
- 
- 
+
+
  DATABASE=> select state, count(state) from developers group by state;
-     state      | count 
+     state      | count
 ----------------+-------
  Vermont        |     2
  Nevada         |     5
