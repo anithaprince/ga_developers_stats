@@ -45,8 +45,13 @@ class Developers extends React.Component{
     let lgClose = () => this.setState({ lgShow: false });
     return(
       <div class="container">
-      <App2 getDevelopers={this.getDevelopers}/>
-      <h2> Developers List </h2>
+        <nav>
+          <App2 getDevelopers={this.getDevelopers}/>
+          <a className="button" href="#">Student Success Rates</a>
+          <a className="button" href="#">Student Companies</a>
+          <a className="button" href="#">GA Sites</a>
+        </nav>
+      <h2 className="developers-list"> Developers List </h2>
         <table className="fixedHeader">
           <thead>
             <tr>
@@ -72,8 +77,13 @@ class Developers extends React.Component{
               <td>{developer.ga_site}</td>
               <td>{developer.company}</td>
               <td>{developer.technology}</td>
+
               <td><button onClick={()=> this.deleteDeveloper(developer, index)}>Delete</button></td>
-            
+
+              <td><img className="edit" src="/css/images/edit.png" /></td>
+              <td onClick={()=> this.deleteDeveloper(developer, index)}><img className="delete" src="/css/images/deletebutton.jpg" /></td>
+
+    
             </tr>
             )
           })}
