@@ -29,7 +29,7 @@ function drawChart() {
 function drawBasic() {
 
       var data = google.visualization.arrayToDataTable([
-        ['City', '2018 Developers Location',],
+        ['City', '2018 Developers GA Site',],
         ['New York City', 14],
         ['San Francisco', 12],
         ['Phoenix', 15],
@@ -48,14 +48,15 @@ function drawBasic() {
       ]);
 
       var options = {
-        title: 'Population of Largest U.S. Cities',
+        title: 'General Assembly Sites Students enrolled',
+        height:500,
         chartArea: {width: '50%'},
         hAxis: {
-          title: 'Total Population',
+          title: 'Number of Students',
           minValue: 0
         },
         vAxis: {
-          title: 'City'
+          title: 'General Assembly Site'
         }
       };
 
