@@ -89,7 +89,7 @@ class Developers extends React.Component{
                      >
                      <img className="edit" src="/css/images/edit.png" />
                     </Button>
-                    <MyLargeModal show={this.state.lgShow} onHide={lgClose}/>
+                    <MyLargeModal1 show={this.state.lgShow} onHide={lgClose}/>
                   </ButtonToolbar>
                 </td>
 
@@ -110,7 +110,7 @@ class Developers extends React.Component{
               <Col xs={8} md={8}>
                 <Panel.Heading> Are you a programmer and associated with General Assembly?</Panel.Heading>
                 <Panel.Body>
-                   Would you interested in participating the study of developers to identify trends in developer education, skills and hiring practices.
+                   Would you be interested in participating the study of developers to identify trends in developer education, skills and hiring practices.
                   <App2 getDevelopers={this.getDevelopers}/>
                 </Panel.Body>
               </Col>
