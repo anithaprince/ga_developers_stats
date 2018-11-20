@@ -120,6 +120,27 @@ GROUP BY
  Oklahoma       |     4
 (49 rows)
 
+select count (*) from developers WHERE age<=18 ;
+ count 
+-------
+     6
+select count (*) from developers WHERE age>18 AND  age<=26 ;
+ count 
+-------
+    42
+select count (*) from developers WHERE age>26 AND  age<=40 ;
+ count 
+-------
+    95
+select count (*) from developers WHERE age>40 AND  age<=55 ;
+ count 
+-------
+    57
+select count (*) from developers WHERE age>55;
+ count 
+-------
+     0
+
 
 * Ruby version
   Struggling through ruby versions from Sumit's computer to Anitha's computer and to Herkoku's version.
