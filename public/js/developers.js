@@ -89,7 +89,7 @@ class Developers extends React.Component{
                      >
                      <img className="edit" src="/css/images/edit.png" />
                     </Button>
-                    <App2 getDevelopers={this.getDevelopers}/>
+                    <MyLargeModal show={this.state.lgShow} onHide={lgClose}/>
                   </ButtonToolbar>
                 </td>
 
