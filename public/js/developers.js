@@ -73,17 +73,7 @@ class Developers extends React.Component{
               <td>{developer.company}</td>
               <td>{developer.technology}</td>
               <td><button onClick={()=> this.deleteDeveloper(developer, index)}>Delete</button></td>
-              <td>
-                <ButtonToolbar>
-                <Button
-                  bsStyle="primary"
-                  onClick={() => this.setState({ lgShow: true })}
-                >
-                  Edit
-                </Button>
-                <MyLargeModal1 show={this.state.lgShow} onHide={lgClose}/>
-              </ButtonToolbar>
-              </td>
+            
             </tr>
             )
           })}
