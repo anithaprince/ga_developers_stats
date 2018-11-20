@@ -1,12 +1,17 @@
+var Button = ReactBootstrap.Button;
+var Modal = ReactBootstrap.Modal;
+var ButtonToolbar = ReactBootstrap.ButtonToolbar;
+
 class Developers extends React.Component{
-  constructor (props){
-    super(props)
+  constructor (props,context){
+    super(props, context)
     this.state = {
-      developers: []
+      developers: [],
+      smShow: false,
+      lgShow: false
     }
     this.getDevelopers = this.getDevelopers.bind(this)
     this.deleteDeveloper = this.deleteDeveloper.bind(this)
-
   }
   componentDidMount () {
     this.getDevelopers();
@@ -35,8 +40,9 @@ class Developers extends React.Component{
         })
       })
   }
-
   render(){
+    let smClose = () => this.setState({ smShow: false });
+    let lgClose = () => this.setState({ lgShow: false });
     return(
       <div class="container">
       <App2 getDevelopers={this.getDevelopers}/>
@@ -67,7 +73,17 @@ class Developers extends React.Component{
               <td>{developer.company}</td>
               <td>{developer.technology}</td>
               <td><button onClick={()=> this.deleteDeveloper(developer, index)}>Delete</button></td>
-              <td><button>Edit</button></td>
+              <td>
+                <ButtonToolbar>
+                <Button
+                  bsStyle="primary"
+                  onClick={() => this.setState({ lgShow: true })}
+                >
+                  Edit
+                </Button>
+                <MyLargeModal1 show={this.state.lgShow} onHide={lgClose}/>
+              </ButtonToolbar>
+              </td>
             </tr>
             )
           })}

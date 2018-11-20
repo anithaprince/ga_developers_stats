@@ -11,12 +11,34 @@ class MyLargeModal extends React.Component {
         aria-labelledby="contained-modal-title-lg"
       >
         <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-lg">Modal heading</Modal.Title>
+          <Modal.Title id="contained-modal-title-lg">Create New Developer </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <CreateDeveloperForm getDevelopers={this.props.getDevelopers} onHide={this.props.onHide}/>
         </Modal.Body>
 
+        <Modal.Footer>
+          <Button onClick={this.props.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
+}
+
+class MyLargeModal1 extends React.Component {
+  render() {
+    return (
+      <Modal
+        {...this.props}
+        bsSize="large"
+        aria-labelledby="contained-modal-title-lg"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title id="contained-modal-title-lg">Edit Form </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <EditForm  onHide={this.props.onHide} />
+        </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.onHide}>Close</Button>
         </Modal.Footer>
@@ -47,7 +69,7 @@ class App2 extends React.Component {
         >
           Add Developer
         </Button>
-        <MyLargeModal show={this.state.lgShow} onHide={lgClose} getDevelopers={this.props.getDevelopers}/>
+        <MyLargeModal show={this.state.lgShow} onHide={lgClose}/>
       </ButtonToolbar>
     );
   }
